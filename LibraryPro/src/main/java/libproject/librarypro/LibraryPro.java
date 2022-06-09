@@ -4,6 +4,8 @@
  */
 
 package libproject.librarypro;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -12,6 +14,9 @@ package libproject.librarypro;
 public class LibraryPro {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("What");
+        Person Person1 = new Person("Niamh", "Webb", 1);
+        book book1 = new book("First", "last", 9);
+        System.out.println(Person1 + "Test");
     }
 }
