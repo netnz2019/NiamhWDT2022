@@ -11,9 +11,9 @@ package libproject.librarypro;
 public class Book {
     private String bookName;
     private String authorName;
-    private int ISBN;
+    private long ISBN;
     
-    public Book (String bookName, String authorName, int ISBN){
+    public Book (String bookName, String authorName, long ISBN){
         this.bookName = bookName;
         this.authorName = authorName;
         this.ISBN = ISBN;
@@ -25,7 +25,7 @@ public class Book {
     public String getAuthorName(){
     return this.authorName;
     }
-    public int getISBN(){
+    public long getISBN(){
         return this.ISBN;
     }
     //setter methods
@@ -35,7 +35,7 @@ public class Book {
     public void setAuthorName(String authorName){
         this.authorName = authorName;
     }
-    public void setPer(int ISBN){
+    public void setPer(long ISBN){
         this.ISBN = ISBN; 
    }
 }

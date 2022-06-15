@@ -11,13 +11,14 @@ package libproject.librarypro;
 public class Person {
     private String firstName;
     private String lastName;
-    private int per;
-    
-    public Person (String firstName, String lastName, int per){
+    private int IDnum;
+
+    public Person(String firstName, String lastName, int IDnum) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.per = per;
+        this.IDnum = IDnum;
     }
+    
     //getter methods
     public String getFirstName(){
         return this.firstName;
@@ -25,8 +26,8 @@ public class Person {
     public String getLastName(){
     return this.lastName;
     }
-    public int getPer(){
-        return this.per;
+    public int getIDnum(){
+        return this.IDnum;
     }
     //setter methods
     public void setFirstName(String firstName){
@@ -35,7 +36,7 @@ public class Person {
     public void setLastName(String lastName){
         this.lastName = lastName;
     }
-    public void setPer(int per){
-        this.per = per; 
+    public void setIDnum(int IDnum){
+        this.IDnum = IDnum; 
    }
 }
