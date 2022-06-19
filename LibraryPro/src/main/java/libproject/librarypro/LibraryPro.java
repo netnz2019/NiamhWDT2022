@@ -4,6 +4,7 @@
  */
 
 package libproject.librarypro;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,9 @@ import java.util.Map;
 public class LibraryPro {
 
     public static void main(String[] args) {
+        Map<Long, String> bookMap = new HashMap<Long, String>();
+        Map<Integer, String> personMap = new HashMap<Integer, String>();
+        ArrayList<String> person = new ArrayList<String>();
         //People
         Person Person1 = new Person("Niamh", "Webb", 1);
         Person Person2 = new Person("Layla", "Spector", 2);
@@ -22,6 +26,15 @@ public class LibraryPro {
         Book book1 = new Book("Malice", "Heather Walter", 9781529101294L);
         Book book2 = new Book("She Gets the Girl", "Alyson Derrick and Rachael Lippincott", 9781398502635L);
         Book book3 = new Book("Heartstopper Volume One", "Alice Oseman", 9781338617436L);
+        
+        // add people to arraylist
+        person.add(Person1.getFirstName()+" " + Person1.getLastName());
+        person = person;
+        System.out.println(person);
+        bookMap.put(book1.getISBN(), Person1.getFirstName()+" " + Person1.getLastName());
+        personMap.put(Person1.getIDnum(), book1.getBookName());
+        System.out.println(bookMap);
+        System.out.println(personMap);
         
         System.out.println("First name: " + Person1.getFirstName());
         System.out.println("Last name: " + Person1.getLastName());
