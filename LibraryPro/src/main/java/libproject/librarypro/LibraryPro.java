@@ -15,8 +15,8 @@ import java.util.Map;
 public class LibraryPro {
 
     public static void main(String[] args) {
-        Map<Long, String> bookMap = new HashMap<Long, String>();
-        Map<Integer, String> personMap = new HashMap<Integer, String>();
+        Map<Long, Integer> bookMap = new HashMap<Long, Integer>();
+        Map<String, String> personMap = new HashMap<String, String>();
         ArrayList<String> person = new ArrayList<String>();
         //People
         Person Person1 = new Person("Niamh", "Webb", 1);
@@ -29,10 +29,9 @@ public class LibraryPro {
         
         // add people to arraylist
         person.add(Person1.getFirstName()+" " + Person1.getLastName());
-        person = person;
         System.out.println(person);
-        bookMap.put(book1.getISBN(), Person1.getFirstName()+" " + Person1.getLastName());
-        personMap.put(Person1.getIDnum(), book1.getBookName());
+        bookMap.put(book1.getISBN(), Person1.getIDnum());
+        personMap.put(Person1.getFirstName()+" " + Person1.getLastName(), book1.getBookName());
         System.out.println(bookMap);
         System.out.println(personMap);
         
