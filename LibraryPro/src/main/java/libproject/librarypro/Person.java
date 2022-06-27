@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package libproject.librarypro;
-
+import java.io.*;
 /**
  *
  * @author niamh
@@ -11,12 +11,12 @@ package libproject.librarypro;
 public class Person {
     private String firstName;
     private String lastName;
-    private int IDnum;
+    private int personIDnum;
 
-    public Person(String firstName, String lastName, int IDnum) {
+    public Person(String firstName, String lastName, int personIDnum) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.IDnum = IDnum;
+        this.personIDnum = personIDnum;
     }
     
     //getter methods
@@ -26,8 +26,8 @@ public class Person {
     public String getLastName(){
     return this.lastName;
     }
-    public int getIDnum(){
-        return this.IDnum;
+    public int getPersonIDnum(){
+        return this.personIDnum;
     }
     //setter methods
     public void setFirstName(String firstName){
@@ -36,7 +36,7 @@ public class Person {
     public void setLastName(String lastName){
         this.lastName = lastName;
     }
-    public void setIDnum(int IDnum){
-        this.IDnum = IDnum; 
+    public void setpersonIDnum(int personIDnum){
+        this.personIDnum = personIDnum; 
    }
 }
