@@ -68,6 +68,7 @@ public class LibraryPro {
         System.out.println("Author: " + book3.getAuthorName());
         System.out.println("ISBN: " + book3.getISBN());
     }
+  
     public static void readFile (String fileName, ArrayList<Person> fileData){
         File file = new File(fileName);
         try{
@@ -91,10 +92,11 @@ public class LibraryPro {
 
     public static void showList(ArrayList<Person> fileData){
         System.out.println("LIST of details");
-        for(Person person:fileData){
-            System.out.println(person.getFirstName());
-            System.out.println(person.getLastName());
-            System.out.println(person.getPersonIDnum());
+       for(Person person:fileData){
+           System.out.println(person.getFirstName());
+           System.out.println(person.getLastName());
+           System.out.println(person.getPersonIDnum());
         }
     }
-}
+    
+ }
