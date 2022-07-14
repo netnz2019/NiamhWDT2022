@@ -115,8 +115,9 @@ public class LibraryPro {
             while(fileScan.hasNextLine()){
                 String[] eachItem = fileScan.nextLine().split(",");
                 try{
-                    int idNum = Integer.parseInt(eachItem[2].trim());
-                    fileDataBook.add(new Person(eachItem[0], eachItem[1], idNum));
+                    long isbn = Long.parseLong(eachItem[2].trim());
+                    int idNum = Integer.parseInt(eachItem[3].trim());
+                    fileDataBook.add(new Book(eachItem[0], eachItem[1], isbn, idNum));
                 }
                 catch(NumberFormatException e){
                     System.out.println(" ignoring this line - couldn't parse ");
@@ -136,6 +137,24 @@ public class LibraryPro {
            System.out.println(person.getLastName());
            System.out.println(person.getPersonIDnum());
         }
+    }
+    public static void showListBook(ArrayList<Book> fileDataBook){
+        System.out.println("LIST of details");
+       for(Book book:fileDataBook){
+           System.out.println(book.getBookName());
+           System.out.println(book.getAuthorName());
+           System.out.println(book.getISBN());
+           System.out.println(book.getBookIDnum());
+        }
+    }
+    public static void addPersonInputs(){
+        String firstName = readString("What is the person first name:");
+        String lastName = readString("What is the persons last name:");
+        int personIDnum = readInt("What is the per");
+        
+    }
+    public static void addPerson(String firstName, String lastName, int personIdnum){
+        
     }
     
  }
