@@ -21,7 +21,7 @@ import java.io.PrintWriter;
  */
 public class LibraryPro {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         Map<Long, Integer> bookMap = new HashMap<Long, Integer>();
         Map<String, String> personMap = new HashMap<String, String>();
         ArrayList<String> person = new ArrayList<String>();
@@ -33,8 +33,12 @@ public class LibraryPro {
        //book file
         String fileNameBook = "book.txt";
         ArrayList<Book> fileDataBook = new ArrayList<Book>();
+        addBook();
+        addPerson();
         readFileBook(fileNameBook, fileDataBook);
         showListBook(fileDataBook);
+        
+        
         //People
         Person Person1 = new Person("Niamh", "Webb", 1);
         Person Person2 = new Person("Layla", "Spector", 2);
@@ -44,36 +48,6 @@ public class LibraryPro {
         Book book2 = new Book("She Gets the Girl", "Alyson Derrick and Rachael Lippincott", 9781398502635L, 2);
         Book book3 = new Book("Heartstopper Volume One", "Alice Oseman", 9781338617436L, 3);
         
-//        // add people to arraylist
-//        person.add(Person1.getFirstName()+" " + Person1.getLastName());
-//        System.out.println(person);
-//        bookMap.put(book1.getISBN(), Person1.getPersonIDnum());
-//        personMap.put(Person1.getFirstName()+" " + Person1.getLastName(), book1.getBookName());
-//        System.out.println(bookMap);
-//        System.out.println(personMap);
-//        
-//        System.out.println("First name: " + Person1.getFirstName());
-//        System.out.println("Last name: " + Person1.getLastName());
-//        System.out.println("ID number: " + Person1.getPersonIDnum());
-//        System.out.println("Book Name: " + book1.getBookName());
-//        System.out.println("Author: " + book1.getAuthorName());
-//        System.out.println("ISBN: " + book1.getISBN());
-//        System.out.println("");
-//        
-//        System.out.println("First name: " + Person2.getFirstName());
-//        System.out.println("Last name: " + Person2.getLastName());
-//        System.out.println("ID number: " + Person2.getPersonIDnum());
-//        System.out.println("Book Name: " + book2.getBookName());
-//        System.out.println("Author: " + book2.getAuthorName());
-//        System.out.println("ISBN: " + book2.getISBN());
-//        System.out.println("");
-//        
-//        System.out.println("First name: " + Person3.getFirstName());
-//        System.out.println("Last name: " + Person3.getLastName());
-//        System.out.println("ID number: " + Person3.getPersonIDnum());
-//        System.out.println("Book Name: " + book3.getBookName());
-//        System.out.println("Author: " + book3.getAuthorName());
-//        System.out.println("ISBN: " + book3.getISBN());
     }
     //A method that gets the string input so that can store than answer and ask question in same line
     public static String readString(String prompt){
@@ -133,9 +107,9 @@ public class LibraryPro {
     public static void showListPerson(ArrayList<Person> fileDataPerson){
         System.out.println("LIST of details");
        for(Person person:fileDataPerson){
-           System.out.println(person.getFirstName());
+           System.out.print(person.getPersonIDnum()+": ");
+           System.out.print(person.getFirstName()+" ");
            System.out.println(person.getLastName());
-           System.out.println(person.getPersonIDnum());
         }
     }
     public static void showListBook(ArrayList<Book> fileDataBook){
@@ -147,14 +121,64 @@ public class LibraryPro {
            System.out.println(book.getBookIDnum());
         }
     }
-    public static void addPersonInputs(){
-        String firstName = readString("What is the person first name:");
-        String lastName = readString("What is the persons last name:");
-        int personIDnum = readInt("What is the per");
+//    public static void addPersonInputs(){
+//        String firstName = readString("What is the person first name:");
+//        String lastName = readString("What is the persons last name:");
+//        int personIDnum = readInt("What is the per");
+//        addPerson(firstName, lastName, personIDnum);
+//        
+//    }
+//    public static void addPerson(String firstName, String lastName, int personIdnum){
+//        Person person = new Person(firstName, lastName, personIdnum);
+//        person.add(person);
+//    }
+    public static void addBook() throws IOException{
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        PrintWriter pw = null;
         
+        try{
+            fw = new FileWriter("book.txt", true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+            pw.print("She Gets the Girl,");
+            pw.print("Alyson Derrick and Rachael Lippincott,");
+            pw.print(9781398502635L);
+            pw.print(",");
+            pw.print(2);
+            System.out.println("Data Successfully appended into file");
+            pw.flush();
+        }
+        finally{
+            try{
+                pw.close();
+                bw.close();
+                fw.close();
+            } catch(IOException io){}
+        }
     }
-    public static void addPerson(String firstName, String lastName, int personIdnum){
+    public static void addPerson() throws IOException{
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        PrintWriter pw = null;
         
+        try{
+            fw = new FileWriter("person.txt", true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+            pw.print("Kate,");
+            pw.print("Belova,");
+            pw.print(3);
+            System.out.println("Data Successfully appended into file");
+            pw.flush();
+        }
+        finally{
+            try{
+                pw.close();
+                bw.close();
+                fw.close();
+            } catch(IOException io){}
+        }
     }
     
  }
