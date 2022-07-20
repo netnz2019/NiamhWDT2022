@@ -20,11 +20,14 @@ import java.io.PrintWriter;
  * @author niamh
  */
 public class LibraryPro {
-
+    
     public static void main(String[] args) throws IOException{
         Map<Long, Integer> bookMap = new HashMap<Long, Integer>();
         Map<String, String> personMap = new HashMap<String, String>();
-        ArrayList<String> person = new ArrayList<String>();
+        ArrayList<Person> people = new ArrayList<Person>();
+       //add info to txt files
+        addBook();
+        addPerson();
         //person file
         String fileNamePerson = "person.txt";
         ArrayList<Person> fileDataPerson = new ArrayList<Person>();
@@ -33,8 +36,7 @@ public class LibraryPro {
        //book file
         String fileNameBook = "book.txt";
         ArrayList<Book> fileDataBook = new ArrayList<Book>();
-        addBook();
-        addPerson();
+        
         readFileBook(fileNameBook, fileDataBook);
         showListBook(fileDataBook);
         
@@ -60,6 +62,11 @@ public class LibraryPro {
     System.out.println(prompt);
     java.util.Scanner keyboard = new java.util.Scanner(System.in);   
     return keyboard.nextInt(); 
+    }
+    public static long readLong(String prompt){   
+    System.out.println(prompt);
+    java.util.Scanner keyboard = new java.util.Scanner(System.in);   
+    return keyboard.nextLong(); 
     }
   //Takes the array list and person txt file and reads the data and puts it in the array
     public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
@@ -121,17 +128,7 @@ public class LibraryPro {
            System.out.println(book.getBookIDnum());
         }
     }
-//    public static void addPersonInputs(){
-//        String firstName = readString("What is the person first name:");
-//        String lastName = readString("What is the persons last name:");
-//        int personIDnum = readInt("What is the per");
-//        addPerson(firstName, lastName, personIDnum);
-//        
-//    }
-//    public static void addPerson(String firstName, String lastName, int personIdnum){
-//        Person person = new Person(firstName, lastName, personIdnum);
-//        person.add(person);
-//    }
+    
     public static void addBook() throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -141,12 +138,15 @@ public class LibraryPro {
             fw = new FileWriter("book.txt", true);
             bw = new BufferedWriter(fw);
             pw = new PrintWriter(bw);
-            pw.print("She Gets the Girl,");
-            pw.print("Alyson Derrick and Rachael Lippincott,");
-            pw.print(9781398502635L);
-            pw.print(",");
-            pw.print(2);
-            System.out.println("Data Successfully appended into file");
+            String bookName = readString("What is the book name:");
+            String authorName = readString("What is the authors name:");
+            long ISBN = readLong("What is the books ISBN:");
+            int bookIDnum = readInt("What is the books id number:");
+            pw.print(bookName+ ",");
+            pw.print(authorName+",");
+            pw.print(ISBN+",");
+            pw.println(bookIDnum);
+            System.out.println("Book Data Successfully appended into file");
             pw.flush();
         }
         finally{
@@ -166,10 +166,13 @@ public class LibraryPro {
             fw = new FileWriter("person.txt", true);
             bw = new BufferedWriter(fw);
             pw = new PrintWriter(bw);
-            pw.print("Kate,");
-            pw.print("Belova,");
-            pw.print(3);
-            System.out.println("Data Successfully appended into file");
+            String firstName = readString("What is the person first name:");
+            String lastName = readString("What is the persons last name:");
+            int personIDnum = readInt("What is the persons id number:");
+            pw.print(firstName + ",");
+            pw.print(lastName +",");
+           pw.println(personIDnum);
+            System.out.println("Person Data Successfully appended into file");
             pw.flush();
         }
         finally{
