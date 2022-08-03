@@ -22,12 +22,13 @@ import java.io.PrintWriter;
 public class LibraryPro {
     
     public static void main(String[] args) throws IOException{
-        Map<Long, Integer> bookMap = new HashMap<Long, Integer>();
-        Map<String, String> personMap = new HashMap<String, String>();
+        HashMap<Integer, String> bookMap = new HashMap<Integer, String>();
+        HashMap<Integer, String> personMap = new HashMap<Integer, String>();
         ArrayList<Person> people = new ArrayList<Person>();
        //add info to txt files
-        addBook();
-        addPerson();
+        //addBook();
+        //addPerson();
+        lending(bookMap, personMap);
         //person file
         String fileNamePerson = "person.txt";
         ArrayList<Person> fileDataPerson = new ArrayList<Person>();
@@ -128,7 +129,7 @@ public class LibraryPro {
            System.out.println(book.getBookIDnum());
         }
     }
-    
+    //asks the user for what to add to the book file
     public static void addBook() throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -166,7 +167,7 @@ public class LibraryPro {
             fw = new FileWriter("person.txt", true);
             bw = new BufferedWriter(fw);
             pw = new PrintWriter(bw);
-            String firstName = readString("What is the person first name:");
+            String firstName = readString("What is the persons first name:");
             String lastName = readString("What is the persons last name:");
             int personIDnum = readInt("What is the persons id number:");
             pw.print(firstName + ",");
@@ -183,5 +184,14 @@ public class LibraryPro {
             } catch(IOException io){}
         }
     }
-    
+    public static void lending(HashMap<Integer, String> bookMap,HashMap<Integer, String> personMap)throws IOException{
+        String lastName = readString("What is the persons last name:");
+        String book = readString("What is the book lending out:");
+        int personIDnum = readInt("What is the persons id number:");
+        int bookIDnum = readInt("What is the books id number:");
+        bookMap.put(bookIDnum,lastName);
+        personMap.put(personIDnum, book);
+        System.out.println(bookMap);
+        System.out.println(personMap);
+    }
  }
