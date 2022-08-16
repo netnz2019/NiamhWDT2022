@@ -20,14 +20,15 @@ import java.io.PrintWriter;
  * @author niamh
  */
 public class LibraryPro {
-    private HashMap<Integer, Integer> bookMap = new HashMap<Integer, Integer>();
-    private HashMap<Integer, Integer> personMap = new HashMap<Integer, Integer>();
+    private static HashMap<Integer, Integer> bookMap = new HashMap<Integer, Integer>();
+    private static HashMap<Integer, Integer> personMap = new HashMap<Integer, Integer>();
     public static void main(String[] args) throws IOException{
         
         ArrayList<Person> people = new ArrayList<Person>();
        //add info to txt files
         //addBook();
         //addPerson();
+        lending();
         lending();
         //person file
         String fileNamePerson = "person.txt";
@@ -184,9 +185,9 @@ public class LibraryPro {
             } catch(IOException io){}
         }
     }
-    public String lending()throws IOException{
-        String lastName = readString("What is the persons last name:");
-        String book = readString("What is the book lending out:");
+    public static void lending()throws IOException{
+        //String lastName = readString("What is the persons last name:");
+        //String book = readString("What is the book lending out:");
         int personIDnum = readInt("What is the persons id number:");
         int bookIDnum = readInt("What is the books id number:");
         bookMap.put(bookIDnum,personIDnum);
