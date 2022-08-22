@@ -3,9 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package libproject.librarypro;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.io.*;
+import java.util.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -36,8 +42,8 @@ public class LibraryProGui extends javax.swing.JPanel {
         ShowPnAndBk = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        ShowPersonButton = new javax.swing.JButton();
+        ShowBookButton = new javax.swing.JButton();
         AddBook = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -66,6 +72,14 @@ public class LibraryProGui extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jButton10 = new javax.swing.JButton();
+        jTextField9 = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
+        jTextField10 = new javax.swing.JTextField();
+        jButton12 = new javax.swing.JButton();
+        jTextField11 = new javax.swing.JTextField();
+        jButton13 = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(450, 450));
@@ -74,14 +88,19 @@ public class LibraryProGui extends javax.swing.JPanel {
 
         jLabel9.setText("Show Book Information");
 
-        jButton8.setText("Press");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        ShowPersonButton.setText("Press");
+        ShowPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ShowPersonButtonActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Press");
+        ShowBookButton.setText("Press");
+        ShowBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowBookButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ShowPnAndBkLayout = new javax.swing.GroupLayout(ShowPnAndBk);
         ShowPnAndBk.setLayout(ShowPnAndBkLayout);
@@ -94,8 +113,8 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addGap(52, 52, 52)
                 .addGroup(ShowPnAndBkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9)
-                    .addComponent(jButton8))
+                    .addComponent(ShowBookButton)
+                    .addComponent(ShowPersonButton))
                 .addContainerGap(155, Short.MAX_VALUE))
         );
         ShowPnAndBkLayout.setVerticalGroup(
@@ -103,12 +122,12 @@ public class LibraryProGui extends javax.swing.JPanel {
             .addGroup(ShowPnAndBkLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(ShowPnAndBkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
+                    .addComponent(ShowPersonButton)
                     .addComponent(jLabel8))
                 .addGap(22, 22, 22)
                 .addGroup(ShowPnAndBkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jButton9))
+                    .addComponent(ShowBookButton))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
 
@@ -171,13 +190,11 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddBookLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
@@ -191,9 +208,9 @@ public class LibraryProGui extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddBookLayout.createSequentialGroup()
-                        .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
@@ -305,31 +322,103 @@ public class LibraryProGui extends javax.swing.JPanel {
 
         jLabel13.setText("What is the book lending out:");
 
+        jTextField8.setText("jTextField1");
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("jButton1");
+
+        jTextField9.setText("jTextField1");
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("jButton1");
+
+        jTextField10.setText("jTextField1");
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setText("jButton1");
+
+        jTextField11.setText("jTextField1");
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
+
+        jButton13.setText("jButton1");
+
         javax.swing.GroupLayout LendingLayout = new javax.swing.GroupLayout(Lending);
         Lending.setLayout(LendingLayout);
         LendingLayout.setHorizontalGroup(
             LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LendingLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(26, 26, 26)
                 .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12))
-                .addContainerGap(245, Short.MAX_VALUE))
+                    .addGroup(LendingLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(jButton10))
+                    .addGroup(LendingLayout.createSequentialGroup()
+                        .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(LendingLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(27, 27, 27)
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(LendingLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(LendingLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton13, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(43, 43, 43))
         );
         LendingLayout.setVerticalGroup(
             LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LendingLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton10)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton11)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton12))
+                .addGap(7, 7, 7)
+                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton13))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Lending", Lending);
@@ -379,25 +468,110 @@ public class LibraryProGui extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void ShowPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPersonButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        showListPerson(fileDataPerson);
+    }//GEN-LAST:event_ShowPersonButtonActionPerformed
 
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void ShowBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowBookButtonActionPerformed
+        // TODO add your handling code here:
+        showListBook(fileDataBook);
+    }//GEN-LAST:event_ShowBookButtonActionPerformed
+//Takes the array list and person txt file and reads the data and puts it in the array
+    public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
+        File file = new File(fileNamePerson);
+        try{
+            Scanner fileScan = new Scanner(file);
+            while(fileScan.hasNextLine()){
+                String[] eachItem = fileScan.nextLine().split(",");
+                try{
+                    int idNum = Integer.parseInt(eachItem[2].trim());
+                    fileDataPerson.add(new Person(eachItem[0], eachItem[1], idNum));
+                }
+                catch(NumberFormatException e){
+                    System.out.println(" ignoring this line - couldn't parse ");
+                }
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println(" File not found ");
+            System.exit(1);
+        }
+    }
+    public static void readFileBook (String fileNameBook, ArrayList<Book> fileDataBook){
+        File file = new File(fileNameBook);
+        try{
+            Scanner fileScan = new Scanner(file);
+            while(fileScan.hasNextLine()){
+                String[] eachItem = fileScan.nextLine().split(",");
+                try{
+                    long isbn = Long.parseLong(eachItem[2].trim());
+                    int idNum = Integer.parseInt(eachItem[3].trim());
+                    fileDataBook.add(new Book(eachItem[0], eachItem[1], isbn, idNum));
+                }
+                catch(NumberFormatException e){
+                    System.out.println(" ignoring this line - couldn't parse ");
+                }
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println(" File not found ");
+            System.exit(1);
+        }
+    }
+//prints out the details of the txt file from the array list
+    public static void showListPerson(ArrayList<Person> fileDataPerson){
+        System.out.println("LIST of details");
+       for(Person person:fileDataPerson){
+           System.out.print(person.getPersonIDnum()+": ");
+           System.out.print(person.getFirstName()+" ");
+           System.out.println(person.getLastName());
+        }
+    }
+    public static void showListBook(ArrayList<Book> fileDataBook){
+        System.out.println("LIST of details");
+       for(Book book:fileDataBook){
+           System.out.println(book.getBookName());
+           System.out.println(book.getAuthorName());
+           System.out.println(book.getISBN());
+           System.out.println(book.getBookIDnum());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddBook;
     private javax.swing.JPanel AddPerson;
     private javax.swing.JPanel Lending;
+    private javax.swing.JButton ShowBookButton;
+    private javax.swing.JButton ShowPersonButton;
     private javax.swing.JPanel ShowPnAndBk;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -413,11 +587,15 @@ public class LibraryProGui extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
