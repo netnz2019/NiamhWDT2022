@@ -27,6 +27,12 @@ public class LibraryProGui extends javax.swing.JPanel {
      */
     public LibraryProGui() {
         initComponents();
+        String fileNamePerson = "person.txt";
+        readFilePerson(fileNamePerson, fileDataPerson);
+        
+        String fileNameBook = "book.txt";
+        readFileBook(fileNameBook, fileDataBook);
+        
     }
 
     /**
@@ -140,7 +146,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Press");
 
         jLabel1.setText("What is the book name:");
 
@@ -155,9 +161,14 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("jButton1");
+        jButton2.setText("Press");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton1");
+        jButton3.setText("Press");
 
         jTextField3.setText("jTextField1");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +186,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("jButton1");
+        jButton4.setText("Press");
 
         javax.swing.GroupLayout AddBookLayout = new javax.swing.GroupLayout(AddBook);
         AddBook.setLayout(AddBookLayout);
@@ -194,7 +205,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
@@ -250,11 +261,11 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton5.setText("jButton1");
+        jButton5.setText("Press");
 
-        jButton6.setText("jButton1");
+        jButton6.setText("Press");
 
-        jButton7.setText("jButton1");
+        jButton7.setText("Press");
 
         jTextField7.setText("jTextField1");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +293,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton6)
                     .addComponent(jButton7)
@@ -329,7 +340,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton10.setText("jButton1");
+        jButton10.setText("Press");
 
         jTextField9.setText("jTextField1");
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
@@ -338,7 +349,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton11.setText("jButton1");
+        jButton11.setText("Press");
 
         jTextField10.setText("jTextField1");
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
@@ -347,7 +358,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton12.setText("jButton1");
+        jButton12.setText("Press");
 
         jTextField11.setText("jTextField1");
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -356,7 +367,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        jButton13.setText("jButton1");
+        jButton13.setText("Press");
 
         javax.swing.GroupLayout LendingLayout = new javax.swing.GroupLayout(Lending);
         Lending.setLayout(LendingLayout);
@@ -370,7 +381,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(jButton10))
                     .addGroup(LendingLayout.createSequentialGroup()
                         .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -493,6 +504,10 @@ public class LibraryProGui extends javax.swing.JPanel {
         // TODO add your handling code here:
         showListBook(fileDataBook);
     }//GEN-LAST:event_ShowBookButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 //Takes the array list and person txt file and reads the data and puts it in the array
     public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
         File file = new File(fileNamePerson);
