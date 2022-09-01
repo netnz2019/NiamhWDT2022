@@ -12,6 +12,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,13 +24,13 @@ public class LibraryProGui extends javax.swing.JPanel {
     private static HashMap<Integer, Integer> personMap = new HashMap<Integer, Integer>();
     private static ArrayList<Person> fileDataPerson = new ArrayList<Person>();
     private static ArrayList<Book> fileDataBook = new ArrayList<Book>();
-    private static String bookName;
-    private static String authorName;
-    private static int bookIDnum;
-    private static long ISBN;
-    private static String firstName;
-    private static String lastName;
-    private static int personIDnum;
+    //private static String bookName;
+    //private static String authorName;
+    //private static int bookIDnum;
+    //private static long ISBN;
+    //private static String firstName;
+    //private static String lastName;
+    //private static int personIDnum;
     /**
      * Creates new form LibraryProGui
      */
@@ -72,9 +74,7 @@ public class LibraryProGui extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         PersonLtNeTxt = new javax.swing.JTextField();
         PersonFtNeTxt = new javax.swing.JTextField();
-        PersonFtNeBtn = new javax.swing.JButton();
-        PersonLtNeBtn = new javax.swing.JButton();
-        PersonIDNumBtn = new javax.swing.JButton();
+        AddPersonBtn = new javax.swing.JButton();
         PersonIDNumTxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Lending = new javax.swing.JPanel();
@@ -207,7 +207,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddBookLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AddBookBtn)
-                .addGap(43, 43, 43))
+                .addGap(83, 83, 83))
         );
         AddBookLayout.setVerticalGroup(
             AddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,11 +255,12 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        PersonFtNeBtn.setText("Press");
-
-        PersonLtNeBtn.setText("Press");
-
-        PersonIDNumBtn.setText("Press");
+        AddPersonBtn.setText("Add Person");
+        AddPersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPersonBtnActionPerformed(evt);
+            }
+        });
 
         PersonIDNumTxt.setText("Enter ID");
         PersonIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -285,12 +286,11 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(PersonLtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PersonFtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PersonLtNeBtn)
-                    .addComponent(PersonIDNumBtn)
-                    .addComponent(PersonFtNeBtn))
-                .addGap(40, 40, 40))
+                .addContainerGap(161, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPersonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AddPersonBtn)
+                .addGap(66, 66, 66))
         );
         AddPersonLayout.setVerticalGroup(
             AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,21 +298,19 @@ public class LibraryProGui extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddPersonLayout.createSequentialGroup()
-                        .addGroup(AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PersonFtNeBtn)
-                            .addComponent(PersonFtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PersonFtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PersonLtNeBtn)
                             .addComponent(PersonLtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AddPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PersonIDNumBtn)
                             .addComponent(PersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)))
                     .addComponent(jLabel5))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(AddPersonBtn)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Add Person", AddPerson);
@@ -463,7 +461,7 @@ public class LibraryProGui extends javax.swing.JPanel {
 
     private void BookISBNTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookISBNTxtActionPerformed
         // TODO add your handling code here:
-        Long ISBN = Long.parseLong(BookISBNTxt.getText());
+        String ISBN = BookISBNTxt.getText();
     }//GEN-LAST:event_BookISBNTxtActionPerformed
 
     private void BookNeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookNeTxtActionPerformed
@@ -504,8 +502,19 @@ public class LibraryProGui extends javax.swing.JPanel {
 
     private void AddBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBookBtnActionPerformed
         // TODO add your handling code here:
-        addBook();
     }//GEN-LAST:event_AddBookBtnActionPerformed
+
+    private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
+        // TODO add your handling code here:
+        String firstName = PersonFtNeTxt.getText();
+        String lastName = PersonLtNeTxt.getText();
+        int personIDnum = Integer.parseInt(PersonIDNumTxt.getText());
+        try {
+            addPerson(firstName,lastName,personIDnum);
+        } catch (IOException ex) {
+            Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_AddPersonBtnActionPerformed
 //Takes the array list and person txt file and reads the data and puts it in the array
     public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
         File file = new File(fileNamePerson);
@@ -566,7 +575,6 @@ public class LibraryProGui extends javax.swing.JPanel {
            System.out.println(book.getBookIDnum());
         }
     }
-    public static void addBook() throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
         PrintWriter pw = null;
@@ -590,7 +598,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             } catch(IOException io){}
         }
     }
-    public static void addPerson() throws IOException{
+    public static void addPerson(String firstName, String lastName, int personIDnum) throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
         PrintWriter pw = null;
@@ -618,6 +626,7 @@ public class LibraryProGui extends javax.swing.JPanel {
     private javax.swing.JPanel AddBook;
     private javax.swing.JButton AddBookBtn;
     private javax.swing.JPanel AddPerson;
+    private javax.swing.JButton AddPersonBtn;
     private javax.swing.JTextField AuthorNeTxt;
     private javax.swing.JTextField BookIDNumTxt;
     private javax.swing.JTextField BookISBNTxt;
@@ -631,11 +640,8 @@ public class LibraryProGui extends javax.swing.JPanel {
     private javax.swing.JButton LendPersonLtNeBtn;
     private javax.swing.JTextField LendPersonLtNeTxt;
     private javax.swing.JPanel Lending;
-    private javax.swing.JButton PersonFtNeBtn;
     private javax.swing.JTextField PersonFtNeTxt;
-    private javax.swing.JButton PersonIDNumBtn;
     private javax.swing.JTextField PersonIDNumTxt;
-    private javax.swing.JButton PersonLtNeBtn;
     private javax.swing.JTextField PersonLtNeTxt;
     private javax.swing.JButton ShowBookButton;
     private javax.swing.JButton ShowPersonButton;
