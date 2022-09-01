@@ -502,6 +502,15 @@ public class LibraryProGui extends javax.swing.JPanel {
 
     private void AddBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBookBtnActionPerformed
         // TODO add your handling code here:
+        String authorName = AuthorNeTxt.getText();
+        String bookName = BookNeTxt.getText();
+        int bookIDnum = Integer.parseInt(BookIDNumTxt.getText());
+        String ISBN = BookISBNTxt.getText();
+        try {
+            addBook(authorName, bookName, ISBN,bookIDnum);
+        } catch (IOException ex) {
+            Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AddBookBtnActionPerformed
 
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
@@ -575,6 +584,7 @@ public class LibraryProGui extends javax.swing.JPanel {
            System.out.println(book.getBookIDnum());
         }
     }
+    public static void addBook(String authorName, String bookName, String ISBN, int bookIDnum) throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
         PrintWriter pw = null;
