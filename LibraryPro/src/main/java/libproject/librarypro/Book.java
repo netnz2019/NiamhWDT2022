@@ -11,10 +11,10 @@ package libproject.librarypro;
 public class Book {
     private String bookName;
     private String authorName;
-    private long ISBN;
+    private String ISBN;
     private int bookIDnum;
     
-    public Book (String bookName, String authorName, long ISBN, int bookIDnum){
+    public Book (String bookName, String authorName, String ISBN, int bookIDnum){
         this.bookName = bookName;
         this.authorName = authorName;
         this.ISBN = ISBN;
@@ -27,7 +27,7 @@ public class Book {
     public String getAuthorName(){
     return this.authorName;
     }
-    public long getISBN(){
+    public String getISBN(){
         return this.ISBN;
     }
     public int getBookIDnum(){
@@ -40,7 +40,7 @@ public class Book {
     public void setAuthorName(String authorName){
         this.authorName = authorName;
     }
-    public void setPer(long ISBN){
+    public void setPer(String ISBN){
         this.ISBN = ISBN; 
    }
     public void setBookIDnum(int bookIDnum){
