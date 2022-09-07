@@ -20,22 +20,17 @@ import java.util.logging.Logger;
  * @author niamh
  */
 public class LibraryProGui extends javax.swing.JPanel {
-    private static HashMap<Integer, Integer> bookMap = new HashMap<Integer, Integer>();
-    private static HashMap<Integer, Integer> personMap = new HashMap<Integer, Integer>();
+    private static HashMap<String, Integer> bookMap = new HashMap<String, Integer>();
+    private static HashMap<String, Integer> personMap = new HashMap<String, Integer>();
     private static ArrayList<Person> fileDataPerson = new ArrayList<Person>();
     private static ArrayList<Book> fileDataBook = new ArrayList<Book>();
-    //private static String bookName;
-    //private static String authorName;
-    //private static int bookIDnum;
-    //private static long ISBN;
-    //private static String firstName;
-    //private static String lastName;
-    //private static int personIDnum;
+    
     /**
      * Creates new form LibraryProGui
      */
     public LibraryProGui() {
         initComponents();
+        
         String fileNamePerson = "person.txt";
         readFilePerson(fileNamePerson, fileDataPerson);
         
@@ -83,13 +78,10 @@ public class LibraryProGui extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         LendPersonLtNeTxt = new javax.swing.JTextField();
-        LendPersonLtNeBtn = new javax.swing.JButton();
         LendPersonIDNumTxt = new javax.swing.JTextField();
-        LendPersonIDNumBtn = new javax.swing.JButton();
         LendBookIDNumTxt = new javax.swing.JTextField();
-        LendBookIDNumBtn = new javax.swing.JButton();
         BookLendTxt = new javax.swing.JTextField();
-        BookLendBtn = new javax.swing.JButton();
+        LendBtn = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(450, 450));
@@ -330,16 +322,12 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        LendPersonLtNeBtn.setText("Press");
-
         LendPersonIDNumTxt.setText("Enter ID");
         LendPersonIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LendPersonIDNumTxtActionPerformed(evt);
             }
         });
-
-        LendPersonIDNumBtn.setText("Press");
 
         LendBookIDNumTxt.setText("Enter ID");
         LendBookIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -348,8 +336,6 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        LendBookIDNumBtn.setText("Press");
-
         BookLendTxt.setText("Enter Name");
         BookLendTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,7 +343,12 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
-        BookLendBtn.setText("Press");
+        LendBtn.setText("Lend");
+        LendBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LendBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LendingLayout = new javax.swing.GroupLayout(Lending);
         Lending.setLayout(LendingLayout);
@@ -370,30 +361,25 @@ public class LibraryProGui extends javax.swing.JPanel {
                         .addGap(2, 2, 2)
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
-                        .addComponent(LendPersonLtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addComponent(LendPersonLtNeBtn))
+                        .addComponent(LendPersonLtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(LendingLayout.createSequentialGroup()
+                            .addComponent(jLabel12)
+                            .addGap(27, 27, 27)
+                            .addComponent(LendBookIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(LendingLayout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addGap(18, 18, 18)
+                            .addComponent(LendPersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(LendingLayout.createSequentialGroup()
-                        .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(LendingLayout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(LendBookIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(LendingLayout.createSequentialGroup()
-                                    .addComponent(jLabel11)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(LendPersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(LendingLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(25, 25, 25)
-                                .addComponent(BookLendTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LendPersonIDNumBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LendBookIDNumBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BookLendBtn, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(43, 43, 43))
+                        .addComponent(jLabel13)
+                        .addGap(25, 25, 25)
+                        .addComponent(BookLendTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LendingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LendBtn)
+                .addGap(76, 76, 76))
         );
         LendingLayout.setVerticalGroup(
             LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,26 +387,22 @@ public class LibraryProGui extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LendPersonLtNeTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LendPersonLtNeBtn)))
+                    .addComponent(LendPersonLtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LendPersonIDNumBtn)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(LendPersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(LendPersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(LendBookIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LendBookIDNumBtn))
+                    .addComponent(LendBookIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(BookLendTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BookLendBtn))
-                .addContainerGap(98, Short.MAX_VALUE))
+                    .addComponent(BookLendTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LendBtn)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Lending", Lending);
@@ -504,10 +486,10 @@ public class LibraryProGui extends javax.swing.JPanel {
         // TODO add your handling code here:
         String authorName = AuthorNeTxt.getText();
         String bookName = BookNeTxt.getText();
-        int bookIDnum = Integer.parseInt(BookIDNumTxt.getText());
         String ISBN = BookISBNTxt.getText();
+        int bookIDnum = Integer.parseInt(BookIDNumTxt.getText());
         try {
-            addBook(authorName, bookName, ISBN,bookIDnum);
+            addBook(authorName, bookName, ISBN, bookIDnum);
         } catch (IOException ex) {
             Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -524,6 +506,15 @@ public class LibraryProGui extends javax.swing.JPanel {
             Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AddPersonBtnActionPerformed
+
+    private void LendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendBtnActionPerformed
+        // TODO add your handling code here:
+        int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
+        int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
+        String lendPersonLtNe = LendPersonLtNeTxt.getText();
+        String bookLend = BookLendTxt.getText();
+        lending(lendBookIDNum, lendPersonIDNum, lendPersonLtNe, bookLend);
+    }//GEN-LAST:event_LendBtnActionPerformed
 //Takes the array list and person txt file and reads the data and puts it in the array
     public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
         File file = new File(fileNamePerson);
@@ -552,9 +543,8 @@ public class LibraryProGui extends javax.swing.JPanel {
             while(fileScan.hasNextLine()){
                 String[] eachItem = fileScan.nextLine().split(",");
                 try{
-                    long isbn = Long.parseLong(eachItem[2].trim());
-                    int idNum = Integer.parseInt(eachItem[3].trim());
-                    fileDataBook.add(new Book(eachItem[0], eachItem[1], isbn, idNum));
+                    int idBookNum = Integer.parseInt(eachItem[3].trim());
+                    fileDataBook.add(new Book(eachItem[0], eachItem[1], eachItem[2], idBookNum));
                 }
                 catch(NumberFormatException e){
                     System.out.println(" ignoring this line - couldn't parse ");
@@ -631,6 +621,12 @@ public class LibraryProGui extends javax.swing.JPanel {
             } catch(IOException io){}
         }
     }
+    public static void lending(int lendBookIDNum, int lendPersonIDNum, String lendPersonLtNe, String bookLend){
+        bookMap.put(bookLend,lendPersonIDNum);
+        personMap.put(lendPersonLtNe, lendBookIDNum);
+        System.out.println(bookMap);
+        System.out.println(personMap);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddBook;
@@ -640,14 +636,11 @@ public class LibraryProGui extends javax.swing.JPanel {
     private javax.swing.JTextField AuthorNeTxt;
     private javax.swing.JTextField BookIDNumTxt;
     private javax.swing.JTextField BookISBNTxt;
-    private javax.swing.JButton BookLendBtn;
     private javax.swing.JTextField BookLendTxt;
     private javax.swing.JTextField BookNeTxt;
-    private javax.swing.JButton LendBookIDNumBtn;
     private javax.swing.JTextField LendBookIDNumTxt;
-    private javax.swing.JButton LendPersonIDNumBtn;
+    private javax.swing.JButton LendBtn;
     private javax.swing.JTextField LendPersonIDNumTxt;
-    private javax.swing.JButton LendPersonLtNeBtn;
     private javax.swing.JTextField LendPersonLtNeTxt;
     private javax.swing.JPanel Lending;
     private javax.swing.JTextField PersonFtNeTxt;

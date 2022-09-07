@@ -383,38 +383,31 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="LendPersonLtNeTxt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="46" max="32767" attributes="0"/>
-                              <Component id="LendPersonLtNeBtn" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                          <Component id="LendBookIDNumTxt" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="LendPersonIDNumTxt" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="BookLendTxt" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="LendBookIDNumTxt" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="LendPersonIDNumBtn" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LendBookIDNumBtn" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BookLendBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="LendPersonIDNumTxt" min="-2" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="BookLendTxt" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="43" pref="160" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="LendBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -424,32 +417,26 @@
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="LendPersonLtNeTxt" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="LendPersonLtNeBtn" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="LendPersonLtNeTxt" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LendPersonIDNumBtn" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LendPersonIDNumTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LendPersonIDNumTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LendBookIDNumTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LendBookIDNumBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BookLendTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BookLendBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="98" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LendBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -483,11 +470,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendPersonLtNeTxtActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="LendPersonLtNeBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Press"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="LendPersonIDNumTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter ID"/>
@@ -495,11 +477,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendPersonIDNumTxtActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="LendPersonIDNumBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Press"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="LendBookIDNumTxt">
               <Properties>
@@ -509,11 +486,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendBookIDNumTxtActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="LendBookIDNumBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Press"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="BookLendTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
@@ -522,10 +494,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookLendTxtActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="BookLendBtn">
+            <Component class="javax.swing.JButton" name="LendBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Press"/>
+                <Property name="text" type="java.lang.String" value="Lend"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendBtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
