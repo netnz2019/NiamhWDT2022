@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  * @author niamh
  */
 public class LibraryProGui extends javax.swing.JPanel {
-    private static HashMap<String, Integer> bookMap = new HashMap<String, Integer>();
-    private static HashMap<String, Integer> personMap = new HashMap<String, Integer>();
+    private static HashMap<Integer, String> bookMap = new HashMap<Integer, String>();
+    private static HashMap<Integer, String> personMap = new HashMap<Integer, String>();
     private static ArrayList<Person> fileDataPerson = new ArrayList<Person>();
     private static ArrayList<Book> fileDataBook = new ArrayList<Book>();
     
@@ -117,7 +117,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                 .addGroup(ShowPnAndBkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ShowBookButton)
                     .addComponent(ShowPersonButton))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         ShowPnAndBkLayout.setVerticalGroup(
             ShowPnAndBkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,11 +136,6 @@ public class LibraryProGui extends javax.swing.JPanel {
         jTabbedPane2.addTab("Show Person and Book", ShowPnAndBk);
 
         BookNeTxt.setText("Enter Name");
-        BookNeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookNeTxtActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("What is the book name:");
 
@@ -149,27 +144,12 @@ public class LibraryProGui extends javax.swing.JPanel {
         jLabel3.setText("What is the books ISBN:");
 
         AuthorNeTxt.setText("Enter Name");
-        AuthorNeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AuthorNeTxtActionPerformed(evt);
-            }
-        });
 
         BookISBNTxt.setText("Enter ISBN");
-        BookISBNTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookISBNTxtActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("What is the books id number:");
 
         BookIDNumTxt.setText("Enter ID");
-        BookIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookIDNumTxtActionPerformed(evt);
-            }
-        });
 
         AddBookBtn.setText("Add Book");
         AddBookBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +175,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(BookISBNTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BookIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BookNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddBookLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AddBookBtn)
@@ -234,18 +214,8 @@ public class LibraryProGui extends javax.swing.JPanel {
         jLabel6.setText("What is the persons last name:");
 
         PersonLtNeTxt.setText("Enter Name");
-        PersonLtNeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PersonLtNeTxtActionPerformed(evt);
-            }
-        });
 
         PersonFtNeTxt.setText("Enter Name");
-        PersonFtNeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PersonFtNeTxtActionPerformed(evt);
-            }
-        });
 
         AddPersonBtn.setText("Add Person");
         AddPersonBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -255,11 +225,6 @@ public class LibraryProGui extends javax.swing.JPanel {
         });
 
         PersonIDNumTxt.setText("Enter ID");
-        PersonIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PersonIDNumTxtActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("What is the persons id number:");
 
@@ -278,7 +243,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(PersonLtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PersonIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PersonFtNeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPersonLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AddPersonBtn)
@@ -316,32 +281,12 @@ public class LibraryProGui extends javax.swing.JPanel {
         jLabel13.setText("What is the book lending out:");
 
         LendPersonLtNeTxt.setText("Enter Name");
-        LendPersonLtNeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LendPersonLtNeTxtActionPerformed(evt);
-            }
-        });
 
         LendPersonIDNumTxt.setText("Enter ID");
-        LendPersonIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LendPersonIDNumTxtActionPerformed(evt);
-            }
-        });
 
         LendBookIDNumTxt.setText("Enter ID");
-        LendBookIDNumTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LendBookIDNumTxtActionPerformed(evt);
-            }
-        });
 
         BookLendTxt.setText("Enter Name");
-        BookLendTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookLendTxtActionPerformed(evt);
-            }
-        });
 
         LendBtn.setText("Lend");
         LendBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -375,7 +320,7 @@ public class LibraryProGui extends javax.swing.JPanel {
                         .addComponent(jLabel13)
                         .addGap(25, 25, 25)
                         .addComponent(BookLendTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 160, Short.MAX_VALUE))
+                .addGap(43, 154, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LendingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LendBtn)
@@ -413,75 +358,28 @@ public class LibraryProGui extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2))
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void PersonIDNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonIDNumTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PersonIDNumTxtActionPerformed
-
-    private void PersonFtNeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonFtNeTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PersonFtNeTxtActionPerformed
-
-    private void PersonLtNeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonLtNeTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PersonLtNeTxtActionPerformed
-
-    private void BookIDNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookIDNumTxtActionPerformed
-        // TODO add your handling code here:
-        int bookIDnum = Integer.parseInt(BookIDNumTxt.getText());
-    }//GEN-LAST:event_BookIDNumTxtActionPerformed
-
-    private void BookISBNTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookISBNTxtActionPerformed
-        // TODO add your handling code here:
-        String ISBN = BookISBNTxt.getText();
-    }//GEN-LAST:event_BookISBNTxtActionPerformed
-
-    private void BookNeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookNeTxtActionPerformed
-        // TODO add your handling code here:
-        String bookName = BookNeTxt.getText();
-    }//GEN-LAST:event_BookNeTxtActionPerformed
 
     private void ShowPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPersonButtonActionPerformed
         // TODO add your handling code here:
         showListPerson(fileDataPerson);
     }//GEN-LAST:event_ShowPersonButtonActionPerformed
 
-    private void LendPersonLtNeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendPersonLtNeTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LendPersonLtNeTxtActionPerformed
-
-    private void LendPersonIDNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendPersonIDNumTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LendPersonIDNumTxtActionPerformed
-
-    private void LendBookIDNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendBookIDNumTxtActionPerformed
-            // TODO add your handling code here:
-    }//GEN-LAST:event_LendBookIDNumTxtActionPerformed
-
-    private void BookLendTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookLendTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BookLendTxtActionPerformed
-
     private void ShowBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowBookButtonActionPerformed
         // TODO add your handling code here:
         showListBook(fileDataBook);
     }//GEN-LAST:event_ShowBookButtonActionPerformed
-
-    private void AuthorNeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorNeTxtActionPerformed
-        // TODO add your handling code here:    
-        String authorName = AuthorNeTxt.getText();
-    }//GEN-LAST:event_AuthorNeTxtActionPerformed
-
+//Takes data from the text fields and when the add book button is pressed it runs the add book method
     private void AddBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBookBtnActionPerformed
         // TODO add your handling code here:
         String authorName = AuthorNeTxt.getText();
@@ -494,7 +392,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AddBookBtnActionPerformed
-
+//Takes data from the text fields and when the add person button is pressed it runs the add person method
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
         // TODO add your handling code here:
         String firstName = PersonFtNeTxt.getText();
@@ -506,7 +404,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AddPersonBtnActionPerformed
-
+//Takes the data entered in the text fields in the lending tab and runs the lending method with the data
     private void LendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendBtnActionPerformed
         // TODO add your handling code here:
         int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
@@ -536,6 +434,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             System.exit(1);
         }
     }
+//Takes the data from the person text files, reads that data and adds it into an arraylist so that the data can be used
     public static void readFileBook (String fileNameBook, ArrayList<Book> fileDataBook){
         File file = new File(fileNameBook);
         try{
@@ -556,7 +455,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             System.exit(1);
         }
     }
-//prints out the details of the txt file from the array list
+//prints out the details of the person txt file from the array list
     public static void showListPerson(ArrayList<Person> fileDataPerson){
         System.out.println("LIST of details");
        for(Person person:fileDataPerson){
@@ -565,6 +464,7 @@ public class LibraryProGui extends javax.swing.JPanel {
            System.out.println(person.getLastName());
         }
     }
+ //Takes the data in the book data arraylist and prints out the infomation
     public static void showListBook(ArrayList<Book> fileDataBook){
         System.out.println("LIST of details");
        for(Book book:fileDataBook){
@@ -574,6 +474,7 @@ public class LibraryProGui extends javax.swing.JPanel {
            System.out.println(book.getBookIDnum());
         }
     }
+//When the add book button is pressed it runs this method that takes the data from the book text fields and prints thme into the book text field in the right order
     public static void addBook(String authorName, String bookName, String ISBN, int bookIDnum) throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -598,6 +499,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             } catch(IOException io){}
         }
     }
+//When the add person button is pressed it runs this method that takes the data from the person text fields and prints them out into the person text file in the correct order
     public static void addPerson(String firstName, String lastName, int personIDnum) throws IOException{
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -622,8 +524,8 @@ public class LibraryProGui extends javax.swing.JPanel {
         }
     }
     public static void lending(int lendBookIDNum, int lendPersonIDNum, String lendPersonLtNe, String bookLend){
-        bookMap.put(bookLend,lendPersonIDNum);
-        personMap.put(lendPersonLtNe, lendBookIDNum);
+        bookMap.put(lendBookIDNum,lendPersonLtNe);
+        personMap.put(lendPersonIDNum, bookLend);
         System.out.println(bookMap);
         System.out.println(personMap);
     }

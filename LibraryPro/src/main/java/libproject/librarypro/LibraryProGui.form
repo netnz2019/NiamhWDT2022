@@ -27,6 +27,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane2" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -35,7 +36,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="jTabbedPane2" min="-2" pref="266" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,7 +69,7 @@
                           <Component id="ShowBookButton" min="-2" max="-2" attributes="0"/>
                           <Component id="ShowPersonButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="155" max="32767" attributes="0"/>
+                      <EmptySpace pref="157" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -146,7 +147,7 @@
                           <Component id="BookIDNumTxt" min="-2" max="-2" attributes="0"/>
                           <Component id="BookNeTxt" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="175" max="32767" attributes="0"/>
+                      <EmptySpace pref="169" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -194,9 +195,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookNeTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -217,17 +215,11 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AuthorNeTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="BookISBNTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter ISBN"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookISBNTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -238,9 +230,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter ID"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookIDNumTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="AddBookBtn">
               <Properties>
@@ -277,7 +266,7 @@
                           <Component id="PersonIDNumTxt" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="PersonFtNeTxt" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="161" max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -328,17 +317,11 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PersonLtNeTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="PersonFtNeTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PersonFtNeTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="AddPersonBtn">
               <Properties>
@@ -352,9 +335,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter ID"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PersonIDNumTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -402,7 +382,7 @@
                               <Component id="BookLendTxt" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="43" pref="160" max="32767" attributes="0"/>
+                      <EmptySpace min="43" pref="154" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -466,33 +446,21 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendPersonLtNeTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="LendPersonIDNumTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter ID"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendPersonIDNumTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="LendBookIDNumTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter ID"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LendBookIDNumTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="BookLendTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Name"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookLendTxtActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="LendBtn">
               <Properties>

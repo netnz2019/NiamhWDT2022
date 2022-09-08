@@ -43,14 +43,7 @@ public class LibraryPro {
         showListBook(fileDataBook);
         
         
-        //People
-        Person Person1 = new Person("Niamh", "Webb", 1);
-        Person Person2 = new Person("Layla", "Spector", 2);
-        Person Person3 = new Person("Kate", "Belova", 3);
-        //Book
-        Book book1 = new Book("Malice", "Heather Walter", 9781529101294L, 1);
-        Book book2 = new Book("She Gets the Girl", "Alyson Derrick and Rachael Lippincott", 9781398502635L, 2);
-        Book book3 = new Book("Heartstopper Volume One", "Alice Oseman", 9781338617436L, 3);
+        
         
     }
     //A method that gets the string input so that can store than answer and ask question in same line
@@ -98,9 +91,9 @@ public class LibraryPro {
             while(fileScan.hasNextLine()){
                 String[] eachItem = fileScan.nextLine().split(",");
                 try{
-                    long isbn = Long.parseLong(eachItem[2].trim());
+                    
                     int idNum = Integer.parseInt(eachItem[3].trim());
-                    fileDataBook.add(new Book(eachItem[0], eachItem[1], isbn, idNum));
+                    fileDataBook.add(new Book(eachItem[0], eachItem[1], eachItem[2], idNum));
                 }
                 catch(NumberFormatException e){
                     System.out.println(" ignoring this line - couldn't parse ");
