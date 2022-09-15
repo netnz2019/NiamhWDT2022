@@ -23,10 +23,11 @@ import java.util.logging.Logger;
 //There are two differnt sets of data , a person and a book, these are then used to identify what person is associated with what ID number. 
 //The ID numbers are used to lend books out to people, the program has the abilty to only have one book lent out at a time
 public class LibraryProGui extends javax.swing.JPanel {
-    private static HashMap<Integer, String> bookMap = new HashMap<Integer, String>();
-    private static HashMap<Integer, String> personMap = new HashMap<Integer, String>();
+    private static HashMap<Integer, Integer> bookMap = new HashMap<Integer, Integer>();
+    private static HashMap<Integer, ArrayList<Integer>> personMap = new HashMap<Integer, ArrayList<Integer>>();
     private static ArrayList<Person> fileDataPerson = new ArrayList<Person>();
     private static ArrayList<Book> fileDataBook = new ArrayList<Book>();
+    private static ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
     
     /**
      * Creates new form LibraryProGui
@@ -387,9 +388,8 @@ public class LibraryProGui extends javax.swing.JPanel {
         // TODO add your handling code here:
         int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
         int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
-        String lendPersonLtNe = LendPersonLtNeTxt.getText();
-        String bookLend = BookLendTxt.getText();
-        lending(lendBookIDNum, lendPersonIDNum, lendPersonLtNe, bookLend);
+        personBookIDs.add(lendBookIDNum);
+        lending(lendBookIDNum, lendPersonIDNum);
     }//GEN-LAST:event_LendBtnActionPerformed
 
     private void BookISBNTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookISBNTxtActionPerformed
