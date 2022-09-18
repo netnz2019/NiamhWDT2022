@@ -27,7 +27,7 @@ public class LibraryProGui extends javax.swing.JPanel {
     private static HashMap<Integer, ArrayList<Integer>> personMap = new HashMap<Integer, ArrayList<Integer>>();
     private static ArrayList<Person> fileDataPerson = new ArrayList<Person>();
     private static ArrayList<Book> fileDataBook = new ArrayList<Book>();
-    private static ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
+    //private static ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
     
     /**
      * Creates new form LibraryProGui
@@ -311,7 +311,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LendingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LendBtn)
-                .addGap(81, 81, 81))
+                .addGap(37, 37, 37))
         );
         LendingLayout.setVerticalGroup(
             LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,9 +324,9 @@ public class LibraryProGui extends javax.swing.JPanel {
                 .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LendBookIDNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LendBtn)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Lending", Lending);
@@ -388,7 +388,7 @@ public class LibraryProGui extends javax.swing.JPanel {
         // TODO add your handling code here:
         int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
         int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
-        personBookIDs.add(lendBookIDNum);
+        
         lending(lendBookIDNum, lendPersonIDNum);
     }//GEN-LAST:event_LendBtnActionPerformed
 
@@ -506,10 +506,31 @@ public class LibraryProGui extends javax.swing.JPanel {
         }
     }
     public static void lending(int lendBookIDNum, int lendPersonIDNum){
-        //bookMap.remove(lendBookIDNum);
-        personMap.remove(lendBookIDNum);
-        bookMap.put(lendBookIDNum,lendPersonIDNum);
-        personMap.put(lendPersonIDNum, personBookIDs);
+        //bookMap.remove(lendBookIDNum
+        //ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
+        //personMap.remove(lendBookIDNum);
+        boolean bookOut = bookMap.containsKey(lendBookIDNum);
+        if (bookOut == true){
+            System.out.println("This book is out");
+        }
+        else{
+            bookMap.put(lendBookIDNum,lendPersonIDNum);
+            boolean present = personMap.containsKey(lendPersonIDNum);
+            if (present == true){
+                ArrayList<Integer> values = personMap.get(lendPersonIDNum);
+                values.add(lendBookIDNum);
+                personMap.put(lendPersonIDNum, values);
+                System.out.println("Values" + values);
+        }
+        else{
+            ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
+            personBookIDs.add(lendBookIDNum);
+            personMap.put(lendPersonIDNum, personBookIDs);
+        }  
+        }
+        
+        
+        //personMap.put(lendPersonIDNum, personBookIDs);
         System.out.println("Book Map " + bookMap);
         System.out.println("Person Map " + personMap);
     }
