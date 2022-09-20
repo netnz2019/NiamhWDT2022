@@ -30,7 +30,7 @@ public class Book {
     public String getISBN(){
         return this.ISBN;
     }
-    public int getBookIDnum(){
+    public Integer getBookIDnum(){
         return this.bookIDnum;
     }
     //setter methods

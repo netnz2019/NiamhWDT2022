@@ -1,4 +1,4 @@
-Niamh,Webb,1
-Layla,Spector,2
-Kate,Belova,3
-Evelyn,St. James,4
+Niamh,Webb,0
+Layla,Spector,1
+Kate,Belova,2
+Evelyn,St. James,3

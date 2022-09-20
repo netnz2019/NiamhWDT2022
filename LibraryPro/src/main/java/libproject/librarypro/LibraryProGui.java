@@ -146,11 +146,6 @@ public class LibraryProGui extends javax.swing.JPanel {
         AuthorNeTxt.setText("Enter Name");
 
         BookISBNTxt.setText("Enter ISBN");
-        BookISBNTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookISBNTxtActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("What is the books id number:");
 
@@ -389,12 +384,9 @@ public class LibraryProGui extends javax.swing.JPanel {
         int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
         int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
         
+        bookTrue(lendBookIDNum);
         lending(lendBookIDNum, lendPersonIDNum);
     }//GEN-LAST:event_LendBtnActionPerformed
-
-    private void BookISBNTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookISBNTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BookISBNTxtActionPerformed
 //Takes the array list and person txt file and reads the data and puts it in the array
     public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
         File file = new File(fileNamePerson);
@@ -466,10 +458,11 @@ public class LibraryProGui extends javax.swing.JPanel {
             fw = new FileWriter("book.txt", true);
             bw = new BufferedWriter(fw);
             pw = new PrintWriter(bw);
+            pw.print("");
             pw.print(bookName+ ",");
             pw.print(authorName+",");
             pw.print(ISBN+",");
-            pw.println(bookIDnum);
+            pw.println(bookIDnum );
             System.out.println("Book Data Successfully appended into file");
             pw.flush();
         }
@@ -533,6 +526,20 @@ public class LibraryProGui extends javax.swing.JPanel {
         //personMap.put(lendPersonIDNum, personBookIDs);
         System.out.println("Book Map " + bookMap);
         System.out.println("Person Map " + personMap);
+    }
+    public static void bookTrue(int lendBookIDNum){
+        for (int index =0; index < fileDataBook.size(); index++){
+            System.out.println(index);
+            if (fileDataBook.get(index).getBookIDnum().equals(lendBookIDNum)){
+                System.out.println("test");
+            }
+            else{
+                System.out.println("No book ID number allocated");
+            }
+        }
+    }
+    public static void personTrue(){
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
