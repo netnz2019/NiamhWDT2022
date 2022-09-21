@@ -27,7 +27,6 @@ public class LibraryProGui extends javax.swing.JPanel {
     private static HashMap<Integer, ArrayList<Integer>> personMap = new HashMap<Integer, ArrayList<Integer>>();
     private static ArrayList<Person> fileDataPerson = new ArrayList<Person>();
     private static ArrayList<Book> fileDataBook = new ArrayList<Book>();
-    //private static ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
     
     /**
      * Creates new form LibraryProGui
@@ -82,6 +81,7 @@ public class LibraryProGui extends javax.swing.JPanel {
         LendPersonIDNumTxt = new javax.swing.JTextField();
         LendBookIDNumTxt = new javax.swing.JTextField();
         LendBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(450, 450));
@@ -287,6 +287,8 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Remove");
+
         javax.swing.GroupLayout LendingLayout = new javax.swing.GroupLayout(Lending);
         Lending.setLayout(LendingLayout);
         LendingLayout.setHorizontalGroup(
@@ -305,8 +307,10 @@ public class LibraryProGui extends javax.swing.JPanel {
                 .addContainerGap(167, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LendingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LendBtn)
-                .addGap(37, 37, 37))
+                .addGroup(LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LendBtn)
+                    .addComponent(jButton1))
+                .addGap(53, 53, 53))
         );
         LendingLayout.setVerticalGroup(
             LendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +325,9 @@ public class LibraryProGui extends javax.swing.JPanel {
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LendBtn)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Lending", Lending);
@@ -378,14 +384,13 @@ public class LibraryProGui extends javax.swing.JPanel {
             Logger.getLogger(LibraryProGui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AddPersonBtnActionPerformed
-//Takes the data entered in the text fields in the lending tab and runs the lending method with the data
+//Takes the data entered in the text fields in the lending tab and runs the data true method and if lending method with the data
     private void LendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendBtnActionPerformed
         // TODO add your handling code here:
         int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
         int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
         
-        bookTrue(lendBookIDNum);
-        lending(lendBookIDNum, lendPersonIDNum);
+        dataTrue(lendBookIDNum,lendPersonIDNum);
     }//GEN-LAST:event_LendBtnActionPerformed
 //Takes the array list and person txt file and reads the data and puts it in the array
     public static void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
@@ -499,9 +504,6 @@ public class LibraryProGui extends javax.swing.JPanel {
         }
     }
     public static void lending(int lendBookIDNum, int lendPersonIDNum){
-        //bookMap.remove(lendBookIDNum
-        //ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
-        //personMap.remove(lendBookIDNum);
         boolean bookOut = bookMap.containsKey(lendBookIDNum);
         if (bookOut == true){
             System.out.println("This book is out");
@@ -524,21 +526,33 @@ public class LibraryProGui extends javax.swing.JPanel {
         
         
         //personMap.put(lendPersonIDNum, personBookIDs);
+        System.out.println("");
         System.out.println("Book Map " + bookMap);
         System.out.println("Person Map " + personMap);
+        System.out.println("-----------------------------");
     }
-    public static void bookTrue(int lendBookIDNum){
-        for (int index =0; index < fileDataBook.size(); index++){
-            System.out.println(index);
-            if (fileDataBook.get(index).getBookIDnum().equals(lendBookIDNum)){
-                System.out.println("test");
+    public static void dataTrue(int lendBookIDNum, int lendPersonIDNum){
+        for (int indexBk =0; indexBk < fileDataBook.size(); indexBk++){
+            if (fileDataBook.get(indexBk).getBookIDnum().equals(lendBookIDNum)){
+                System.out.println("Found book ID number");
+                for (int indexPn =0; indexPn < fileDataPerson.size(); indexPn++){
+                    if (fileDataPerson.get(indexPn).getPersonIDnum().equals(lendPersonIDNum)){
+                        System.out.println("Found person ID number");
+                        lending(lendBookIDNum, lendPersonIDNum);
+                        break;
+                    }
+                    else{
+                        System.out.println("No person ID number allocated");
+                    }
+                }
+                break;
             }
             else{
                 System.out.println("No book ID number allocated");
             }
         }
     }
-    public static void personTrue(){
+    public static void personTrue(int lendPersonIDNum){
         
     }
 
@@ -561,6 +575,7 @@ public class LibraryProGui extends javax.swing.JPanel {
     private javax.swing.JButton ShowBookButton;
     private javax.swing.JButton ShowPersonButton;
     private javax.swing.JPanel ShowPnAndBk;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

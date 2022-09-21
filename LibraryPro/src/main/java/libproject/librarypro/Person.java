@@ -26,7 +26,7 @@ public class Person {
     public String getLastName(){
     return this.lastName;
     }
-    public int getPersonIDnum(){
+    public Integer getPersonIDnum(){
         return this.personIDnum;
     }
     //setter methods
