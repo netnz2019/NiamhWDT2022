@@ -2,3 +2,6 @@ Niamh,Webb,1
 Layla,Spector,2
 Kate,Belova,3
 Evelyn,St. James,4
+Marie,Webb,5
+Jazz,Smith,6
+Athena,Olympus,7
