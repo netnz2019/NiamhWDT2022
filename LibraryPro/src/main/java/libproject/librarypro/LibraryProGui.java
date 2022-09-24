@@ -340,6 +340,8 @@ public class LibraryProGui extends javax.swing.JPanel {
 
         textArea.setColumns(20);
         textArea.setRows(5);
+        textArea.setToolTipText("");
+        textArea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textArea.setEnabled(false);
         jScrollPane1.setViewportView(textArea);
 
@@ -474,7 +476,7 @@ public class LibraryProGui extends javax.swing.JPanel {
            textArea.append("Book Name:"+book.getBookName()+"\n");
            textArea.append("Author Name:"+book.getAuthorName()+"\n");
            textArea.append("ISBN:"+book.getISBN()+"\n");
-           textArea.append("");
+           textArea.append("\n");
         }
     }
 //When the add book button is pressed it runs this method that takes the data from the book text fields and prints thme into the book text field in the right order
@@ -532,7 +534,7 @@ public class LibraryProGui extends javax.swing.JPanel {
     public void lending(int lendBookIDNum, int lendPersonIDNum){
         boolean bookOut = bookMap.containsKey(lendBookIDNum);
         if (bookOut == true){
-            textArea.setText("This book is out");
+            textArea.setText("This book is out"+"\n");
         }
         else{
             bookMap.put(lendBookIDNum,lendPersonIDNum);
@@ -546,16 +548,15 @@ public class LibraryProGui extends javax.swing.JPanel {
             else{
                 ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
                 personBookIDs.add(lendBookIDNum);
+                System.out.println(personBookIDs);
                 personMap.put(lendPersonIDNum, personBookIDs);
             }  
         }
-        
-        //textArea.setText("");
         textArea.append("Book Map " + bookMap+"\n");
         textArea.append("Person Map " + personMap+"\n");
-        textArea.append("-----------------------------");
     }
     public void dataTrue(int lendBookIDNum, int lendPersonIDNum){
+        String noPersonId = "";
         for (int indexBk =0; indexBk < fileDataBook.size(); indexBk++){
             if (fileDataBook.get(indexBk).getBookIDnum().equals(lendBookIDNum)){
                 textArea.setText("Found book ID number"+"\n");
@@ -563,10 +564,11 @@ public class LibraryProGui extends javax.swing.JPanel {
                     if (fileDataPerson.get(indexPn).getPersonIDnum().equals(lendPersonIDNum)){
                         textArea.append("Found person ID number"+"\n");
                         lending(lendBookIDNum, lendPersonIDNum);
+                        noPersonId = "yes";
                         break;
                     }
                     else{
-                        textArea.append("No person ID number allocated"+"\n");
+                        noPersonId = "no";
                     }
                 }
                 break;
@@ -575,18 +577,22 @@ public class LibraryProGui extends javax.swing.JPanel {
                 textArea.setText("No book ID number allocated"+"\n");
             }
         }
+        if (noPersonId == "no"){
+            textArea.append("No person ID number allocated"+"\n");
+        }
     }
     public void returning(int lendBookIDNum, int lendPersonIDNum){
         boolean bookOut = bookMap.containsKey(lendBookIDNum);
         if (bookOut == true){
-            int idPerson = bookMap.get(lendPersonIDNum);
             bookMap.remove(lendBookIDNum);
-            
-            //private static HashMap<Integer, ArrayList<Integer>> personMap = new HashMap<Integer, ArrayList<Integer>>();
+            for (Map.Entry<Integer, ArrayList<Integer>> entry:personMap.entrySet()){
+                ArrayList<Integer> personRemoveBook = personMap.get(lendPersonIDNum);
+                personRemoveBook.remove(Integer.valueOf(lendBookIDNum));
+            }
         }
         
-        System.out.println("Book Map " + bookMap);
-        System.out.println("Person Map " + personMap);
+        textArea.setText("Book Map " + bookMap + "\n");
+        textArea.append("Person Map " + personMap);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
