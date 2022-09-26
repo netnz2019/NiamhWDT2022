@@ -384,7 +384,7 @@ public class LibraryProGui extends javax.swing.JPanel {
         String authorName = AuthorNeTxt.getText();
         String bookName = BookNeTxt.getText();
         String ISBN = BookISBNTxt.getText();
-        int bookIDnum = Integer.parseInt(BookIDNumTxt.getText());
+        int bookIDnum = fileDataBook.size() + 1;
         try {
             addBook(authorName, bookName, ISBN, bookIDnum);
         } catch (IOException ex) {
@@ -395,8 +395,8 @@ public class LibraryProGui extends javax.swing.JPanel {
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
         // TODO add your handling code here:
         String firstName = PersonFtNeTxt.getText();
-        String lastName = PersonLtNeTxt.getText();
-        int personIDnum = Integer.parseInt(PersonIDNumTxt.getText());
+        String lastName = PersonLtNeTxt.getText(); 
+        int personIDnum = fileDataPerson.size() + 1;
         try {
             addPerson(firstName,lastName,personIDnum, fileDataPerson);
         } catch (IOException ex) {
