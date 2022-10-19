@@ -5,5 +5,4 @@ Evelyn,St. James,4
 Marie,Webb,5
 Jazz,Smith,6
 Athena,Olympus,7
-Test,Test,8
-Test2,Test2,9
+name,Enter Name,8
