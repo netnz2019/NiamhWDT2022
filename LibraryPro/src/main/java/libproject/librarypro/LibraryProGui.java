@@ -468,6 +468,12 @@ public class LibraryProGui extends javax.swing.JPanel {
         else{
            JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
         }
+        try{
+            lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
+        }catch(NumberFormatException ex){}
+        try{
+            lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
+        }catch(NumberFormatException ex){}
         if(lendBookTrue == true && lendPersonTrue == true){
             dataTrue(lendBookIDNum,lendPersonIDNum);
         }
@@ -492,6 +498,12 @@ public class LibraryProGui extends javax.swing.JPanel {
         else{
            JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
         }
+        try{
+            returnBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
+        }catch(NumberFormatException ex){}
+        try{
+            returnPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
+        }catch(NumberFormatException ex){}
         
         if(returnBookTrue == true && returnPersonTrue == true){
             returning(returnBookIDNum,returnPersonIDNum);
