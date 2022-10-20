@@ -367,16 +367,37 @@ public class LibraryProGui extends javax.swing.JPanel {
         String ISBN = BookISBNTxt.getText();
         int bookIDnum = fileDataBook.size() + 1;
         if(authorName.length() > 1 && authorName.length() <= 50 && !"Enter First Name Last Name".equals(authorName)){
-            authorNameTrue = true;
+            if(authorName.matches("[a-zA-Z\\s]+")){
+                authorNameTrue = true;
+            }
+            else{
+            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            }
         }
-        else if(bookName.length() > 1 && bookName.length() <= 50 && !"Enter Book Name".equals(bookName)){
-            bookNameTrue = true;
+        else{
+            JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
+        }
+        if(bookName.length() > 1 && bookName.length() <= 50 && !"Enter Book Name".equals(bookName)){
+            if(bookName.matches("[a-zA-Z\\s]+")){
+                bookNameTrue = true;
+            }
+            else{
+            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            }
         }
         else{
             JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
         }
         if(ISBN.length() == 13 && !"Enter ISBN".equals(ISBN)){
-            ISBNTrue = true;
+            if(ISBN.matches("[0-9]+")){
+                ISBNTrue = true;
+            }
+            else{
+            JOptionPane.showMessageDialog(frame, "Can only contain digits");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(frame,"ISBN needs to be 13 digits long");
         }
         
         if(authorNameTrue == true && bookNameTrue == true && ISBNTrue == true){
@@ -398,10 +419,23 @@ public class LibraryProGui extends javax.swing.JPanel {
         String lastName = PersonLtNeTxt.getText(); 
         int personIDnum = fileDataPerson.size() + 1;
         if(firstName.length() > 1 && firstName.length() <= 50 && !"Enter Name".equals(firstName)){
-            firstNameTrue = true;
+            if(firstName.matches("[a-zA-Z]+")){
+                firstNameTrue = true;
+            }
+            else{
+            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            }
         }
-        else if(lastName.length() > 1 && lastName.length() <= 50 && !"Enter Name".equals(lastName)){
-            lastNameTrue = true;
+        else{
+            JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
+        }
+        if(lastName.length() > 1 && lastName.length() <= 50 && !"Enter Name".equals(lastName)){
+            if(lastName.matches("[a-zA-Z]+")){
+                lastNameTrue = true;
+            }
+            else{
+            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            }
         }
         else{
             JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
@@ -417,18 +451,51 @@ public class LibraryProGui extends javax.swing.JPanel {
 //Takes the data entered in the text fields in the lending tab and runs the data true method and if lending method with the data
     private void LendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LendBtnActionPerformed
         // TODO add your handling code here:
-        int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
-        int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
-        
-        dataTrue(lendBookIDNum,lendPersonIDNum);
+        JFrame frame = new JFrame();
+        boolean lendBookTrue = false;
+        boolean lendPersonTrue = false;    
+        int lendBookIDNum = 0;
+        int lendPersonIDNum = 0;
+        if(LendBookIDNumTxt.getText().matches("[0-9]+")){
+           lendBookTrue = true; 
+        }
+        else{
+           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+        }
+        if(LendPersonIDNumTxt.getText().matches("[0-9]+")){
+           lendPersonTrue = true; 
+        }
+        else{
+           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+        }
+        if(lendBookTrue == true && lendPersonTrue == true){
+            dataTrue(lendBookIDNum,lendPersonIDNum);
+        }
     }//GEN-LAST:event_LendBtnActionPerformed
 
     private void ReturnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBtnActionPerformed
         // TODO add your handling code here:
-        int lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
-        int lendPersonIDNum = Integer.parseInt(LendPersonIDNumTxt.getText());
+        JFrame frame = new JFrame();
+        boolean returnBookTrue = false;
+        boolean returnPersonTrue = false; 
+        int returnBookIDNum = 0;
+        int returnPersonIDNum = 0;
+        if(LendBookIDNumTxt.getText().matches("[0-9]+")){
+           returnBookTrue = true; 
+        }
+        else{
+           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+        }
+        if(LendPersonIDNumTxt.getText().matches("[0-9]+")){
+           returnPersonTrue = true; 
+        }
+        else{
+           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+        }
         
-        returning(lendBookIDNum,lendPersonIDNum);
+        if(returnBookTrue == true && returnPersonTrue == true){
+            returning(returnBookIDNum,returnPersonIDNum);
+        }  
     }//GEN-LAST:event_ReturnBtnActionPerformed
 //Takes the array list and person txt file and reads the data and puts it in the array
     public void readFilePerson (String fileNamePerson, ArrayList<Person> fileDataPerson){
