@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 //This program brings values from a txt file that can be edited to add to and/or can show that data. 
 //There are two differnt sets of data , a person and a book, these are then used to identify what person is associated with what ID number. 
-//The ID numbers are used to lend books out to people, the program has the abilty to only have one book lent out at a time
+//The ID numbers are used to lend books out to people, and return books, the program has the abilty to only have one book lent out at a time
 public class LibraryProGui extends javax.swing.JPanel {
     private static HashMap<Integer, Integer> bookMap = new HashMap<Integer, Integer>();
     private static HashMap<Integer, ArrayList<Integer>> personMap = new HashMap<Integer, ArrayList<Integer>>();
@@ -355,7 +355,7 @@ public class LibraryProGui extends javax.swing.JPanel {
         // TODO add your handling code here:
         showListBook(fileDataBook);
     }//GEN-LAST:event_ShowBookButtonActionPerformed
-//Takes data from the text fields and when the add book button is pressed it runs the add book method
+//Takes data from the text fields and when the add book button is pressed it runs the add book method, will only run if data is vaild
     private void AddBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBookBtnActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame();
@@ -371,29 +371,29 @@ public class LibraryProGui extends javax.swing.JPanel {
                 authorNameTrue = true;
             }
             else{
-            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            JOptionPane.showMessageDialog(frame, "Authors name can only contain letters");
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
+            JOptionPane.showMessageDialog(frame, "Authors name needs to be between 1 and 50 letters");
         }
         if(bookName.length() > 1 && bookName.length() <= 50 && !"Enter Book Name".equals(bookName)){
             if(bookName.matches("[a-zA-Z\\s]+")){
                 bookNameTrue = true;
             }
             else{
-            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            JOptionPane.showMessageDialog(frame, "Book name can only contain letters");
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
+            JOptionPane.showMessageDialog(frame, "Book name needs to be between 1 and 50 letters");
         }
         if(ISBN.length() == 13 && !"Enter ISBN".equals(ISBN)){
             if(ISBN.matches("[0-9]+")){
                 ISBNTrue = true;
             }
             else{
-            JOptionPane.showMessageDialog(frame, "Can only contain digits");
+            JOptionPane.showMessageDialog(frame, "ISBN can only contain digits");
             }
         }
         else{
@@ -409,7 +409,7 @@ public class LibraryProGui extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_AddBookBtnActionPerformed
-//Takes data from the text fields and when the add person button is pressed it runs the add person method
+//Takes data from the text fields and when the add person button is pressed it runs the add person method, will only add if data is valid 
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame();
@@ -418,29 +418,31 @@ public class LibraryProGui extends javax.swing.JPanel {
         String firstName = PersonFtNeTxt.getText();
         String lastName = PersonLtNeTxt.getText(); 
         int personIDnum = fileDataPerson.size() + 1;
-        if(firstName.length() > 1 && firstName.length() <= 50 && !"Enter Name".equals(firstName)){
+        if(firstName.length() >= 1 && firstName.length() <= 50 && !"Enter Name".equals(firstName)){
             if(firstName.matches("[a-zA-Z]+")){
                 firstNameTrue = true;
             }
             else{
-            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            JOptionPane.showMessageDialog(frame, "First name can only contain letters");
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
+            JOptionPane.showMessageDialog(frame, "First name needs to be between 1 and 50 letters");
         }
         if(lastName.length() > 1 && lastName.length() <= 50 && !"Enter Name".equals(lastName)){
             if(lastName.matches("[a-zA-Z]+")){
                 lastNameTrue = true;
             }
             else{
-            JOptionPane.showMessageDialog(frame, "Can only contain letters");
+            JOptionPane.showMessageDialog(frame, "Last name only contain letters");
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Charcters need to be between 1 and 50");
+            JOptionPane.showMessageDialog(frame, "Last name needs to be between 1 and 50 letters");
         }
         if(firstNameTrue == true && lastNameTrue == true){
+            firstName = firstName.substring(0,1).toUpperCase() + firstName.substring(1);
+            lastName = lastName.substring(0,1).toUpperCase() + lastName.substring(1);
             try {
                 addPerson(firstName,lastName,personIDnum, fileDataPerson);
             } catch (IOException ex) {
@@ -460,13 +462,13 @@ public class LibraryProGui extends javax.swing.JPanel {
            lendBookTrue = true; 
         }
         else{
-           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+           JOptionPane.showMessageDialog(frame, "Book ID can only contain digits"); 
         }
         if(LendPersonIDNumTxt.getText().matches("[0-9]+")){
            lendPersonTrue = true; 
         }
         else{
-           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+           JOptionPane.showMessageDialog(frame, "Person ID can only contain digits"); 
         }
         try{
             lendBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
@@ -490,13 +492,13 @@ public class LibraryProGui extends javax.swing.JPanel {
            returnBookTrue = true; 
         }
         else{
-           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+           JOptionPane.showMessageDialog(frame, "Book ID can only contain digits"); 
         }
         if(LendPersonIDNumTxt.getText().matches("[0-9]+")){
            returnPersonTrue = true; 
         }
         else{
-           JOptionPane.showMessageDialog(frame, "Can only contain digits"); 
+           JOptionPane.showMessageDialog(frame, "Person ID can only contain digits"); 
         }
         try{
             returnBookIDNum = Integer.parseInt(LendBookIDNumTxt.getText());
@@ -553,14 +555,14 @@ public class LibraryProGui extends javax.swing.JPanel {
     }
 //prints out the details of the person txt file from the array list
     public void showListPerson(ArrayList<Person> fileDataPerson){
-        textArea.setText("LIST of details"+"\n");
+        textArea.setText("List of person details"+"\n");
        for(Person person:fileDataPerson){
            textArea.append(person.getPersonIDnum()+": "+person.getFirstName()+" "+person.getLastName()+"\n");
         }
     }
  //Takes the data in the book data arraylist and prints out the infomation
     public void showListBook(ArrayList<Book> fileDataBook){
-       textArea.setText("LIST of details"+"\n");
+       textArea.setText("List of book details"+"\n");
        for(Book book:fileDataBook){
            textArea.append("ID:"+book.getBookIDnum()+"\n");
            textArea.append("Book Name:"+book.getBookName()+"\n");
@@ -584,7 +586,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             pw.print(authorName+",");
             pw.print(ISBN+",");
             pw.println(bookIDnum );
-            textArea.setText("Book Data Successfully appended into file");
+            textArea.setText("Book data successfully added to file");
             pw.flush();
             fileDataBook.add(new Book(bookName, authorName,ISBN, bookIDnum));
         }
@@ -609,7 +611,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             pw.print(firstName + ",");
             pw.print(lastName +",");
             pw.println(personIDnum);
-            textArea.setText("Person Data Successfully appended into file");
+            textArea.setText("Person data successfully added to file");
             pw.flush();
             fileDataPerson.add(new Person(firstName,lastName,personIDnum));
         }
@@ -621,6 +623,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             } catch(IOException io){}
         }
     }
+//Checks to see if book id allocated to a person already and if it dosent it adds to the book map with the person id and to the person map using an arraylist to hold multiple books    
     public void lending(int lendBookIDNum, int lendPersonIDNum){
         boolean bookOut = bookMap.containsKey(lendBookIDNum);
         if (bookOut == true){
@@ -633,18 +636,17 @@ public class LibraryProGui extends javax.swing.JPanel {
                 ArrayList<Integer> values = personMap.get(lendPersonIDNum);
                 values.add(lendBookIDNum);
                 personMap.put(lendPersonIDNum, values);
-                System.out.println("Values" + values);
             }
             else{
                 ArrayList<Integer> personBookIDs = new ArrayList<Integer>();
                 personBookIDs.add(lendBookIDNum);
-                System.out.println(personBookIDs);
                 personMap.put(lendPersonIDNum, personBookIDs);
             }  
         }
-        textArea.append("Book Map " + bookMap+"\n");
-        textArea.append("Person Map " + personMap+"\n");
+        textArea.append("Books out to people " + bookMap + "\n");
+        textArea.append("What books people have:" + personMap);
     }
+//Makes sure that the id number entered is one allocated to a book or person, if it dosent it wont let the lending or returning methods run
     public void dataTrue(int lendBookIDNum, int lendPersonIDNum){
         String noPersonId = "";
         for (int indexBk =0; indexBk < fileDataBook.size(); indexBk++){
@@ -671,6 +673,7 @@ public class LibraryProGui extends javax.swing.JPanel {
             textArea.append("No person ID number allocated"+"\n");
         }
     }
+//Checks if book is out, if it is will take it out of the book map and goes through the person map arraylist to remove the book id as well   
     public void returning(int lendBookIDNum, int lendPersonIDNum){
         boolean bookOut = bookMap.containsKey(lendBookIDNum);
         if (bookOut == true){
@@ -681,8 +684,8 @@ public class LibraryProGui extends javax.swing.JPanel {
             }
         }
         
-        textArea.setText("Book Map " + bookMap + "\n");
-        textArea.append("Person Map " + personMap);
+        textArea.setText("Books out to people " + bookMap + "\n");
+        textArea.append("What books people have:" + personMap);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
